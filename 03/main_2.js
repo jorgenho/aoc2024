@@ -7,7 +7,6 @@ let m;
 
 let total = 0;
 let doIt = true;
-let skip = false;
 
 while ((m = regex.exec(data)) !== null) {
   if (m.index === regex.lastIndex) {
