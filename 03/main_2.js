@@ -13,7 +13,7 @@ while ((m = regex.exec(data)) !== null) {
     regex.lastIndex++;
   }
 
-  m.forEach((match, groupIndex) => {
+  m.forEach((match) => {
     if (match === "do()" || match === `don't()`) {
       doIt = match === "do()";
     } else {
