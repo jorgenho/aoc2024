@@ -1,3 +1,4 @@
+console.time("aoc");
 const fs = require("node:fs");
 const data = fs.readFileSync("input.txt", "utf8");
 
@@ -52,6 +53,8 @@ for (i = 0; i < rows.length; i++) {
     }
   }
 }
+
+console.timeEnd("aoc");
 
 function isMatch(startingRow, startingIndex, verticalOffset, horizontalOffset) {
   try {
