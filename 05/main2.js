@@ -50,20 +50,7 @@ for (i = 0; i < updates.length; i++) {
 
 
 
-// function isInCorrectOrder(rules, numbers) {
-//   let isCorrect = false;
 
-//    for(j=0;j<numbers.length-1;j++) {
-//      if(rules.indexOf(`${numbers[j]}|${numbers[j+1]}`) === -1) {
-//       isCorrect = false
-//       break;
-//     } else {
-//       isCorrect = true
-//     }
-//    }
-   
-//    return isCorrect;
-// }
 
 
 console.log(total);
