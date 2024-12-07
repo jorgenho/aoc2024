@@ -20,7 +20,7 @@ for (let i = 0; i < rows.length; i++) {
   if (!permutationsMap.has(numbers.length - 1)) {
     permutationsMap.set(
       numbers.length - 1,
-      generateOperatorPermutations(numbers.length - 1)
+      generateOperatorPermutations(numbers.length - 1),
     );
   }
   perms = permutationsMap.get(numbers.length - 1);
