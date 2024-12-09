@@ -14,8 +14,6 @@ for (let index = 0; index < data.length; index++) {
   }
 }
 
-console.log(parts);
-
 for (let index = parts.length - 1; index >= 0; index--) {
   const element = parts[index];
   if (Number(element) !== NaN) {
@@ -31,13 +29,12 @@ for (let index = parts.length - 1; index >= 0; index--) {
 
 let total = 0;
 
-parts
-  .filter((f) => f !== ".")
-  .map((n, index) => {
-    if (n !== ".") {
-      total += Number(n) * index;
-    }
-  });
+parts.map((n, index) => {
+  if (n !== ".") {
+    console.log(n);
+    total += Number(n) * index;
+  }
+});
 console.log(total);
 
 console.timeEnd("elapsed");
