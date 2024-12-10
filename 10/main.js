@@ -8,7 +8,7 @@ let total = [];
 
 for (let i = 0; i < rows.length; i++) {
   for (let j = 0; j < rows[i].length; j++) {
-    if (rows[i].charAt(j) === "9") {
+    if (rows[i].charAt(j) === "0") {
       total = [...total, ...findBottomNodesFromNode(j, i)];
     }
   }
@@ -19,17 +19,19 @@ function findBottomNodesFromNode(x, y) {
   function recurse(nodes) {
     nodes.forEach(({ x, y }) => {
       const neighbours = getAdjacentDecreasingNodes(x, y);
-      if (rows[y].charAt(x) === "1") {
-        const endPoints = neighbours.filter(
-          ({ x, y }) => rows[y].charAt(x) === "0"
-        );
+      if (rows[y].charAt(x) === "8") {
+        const endPoints = neighbours
+          .filter(({ x, y }) => rows[y].charAt(x) === "9")
+          .map((c) => `${c.x}:${c.y}`);
 
         if (endPoints.length > 0) {
           results = [...results, ...endPoints];
         }
       }
 
-      if (neighbours.length === 0) {
+      if (neighbours.length === 0 && results.length === 8) {
+        console.log(`stopper på ${x}:${y} - ${rows[y].charAt(x)}`);
+        console.log(results);
         return results;
       }
       recurse(neighbours);
@@ -43,7 +45,7 @@ function findBottomNodesFromNode(x, y) {
 }
 
 function getAdjacentDecreasingNodes(x, y) {
-  const value = (Number(rows[y].charAt(x)) - 1).toString();
+  const value = (Number(rows[y].charAt(x)) + 1).toString();
 
   const neighbours = [
     getNeighbourNode(x, y, -1, 0),
@@ -70,6 +72,13 @@ function getNeighbourNode(x, y, moveX, moveY) {
   return { x: newX, y: newY };
 }
 
-console.log(total);
+const counts = {};
+
+// console.log(total.map((t) => rows[t.y].charAt(t.x)));
+for (const item of total) {
+  counts[item] = counts[item] ? counts[item] + 1 : 1;
+}
+
+console.log(counts);
 
 console.timeEnd("elapsed");
