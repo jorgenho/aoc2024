@@ -1,6 +1,6 @@
 console.time("elapsed");
 import { readFileSync } from "node:fs";
-const data = readFileSync("input.txt", "utf8");
+const data = readFileSync("ex.txt", "utf8");
 
 const rows = data.split("\n");
 
@@ -25,7 +25,7 @@ function findHillNodesFromBase(x, y) {
       });
     }
 
-    return new Set(results).size;
+    return results.length;
   }
 
   return recurse(x, y);
